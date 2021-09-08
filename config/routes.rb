@@ -3,5 +3,14 @@ Rails.application.routes.draw do
 
   resource :welcome
   
-    root 'welcome#index'
+  root 'welcome#index'
+
+  resources :users, only: [:new, :create, :show]
+  resources :sessions, only: [:new, :create, :destroy]
+  get 'logout' => 'sessions#destroy'
+  get 'login' => 'sessions#new'
+  get 'signup' => 'users#new'
+
+  get "admin" => "welcome#admin", :as => "admin"
+
 end

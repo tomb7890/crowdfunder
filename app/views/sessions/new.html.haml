@@ -1,0 +1,27 @@
+.login-and-signup-view
+  .row
+    .columns
+      = form_tag sessions_path, :class => 'new-user-form' do
+        .row
+          .columns
+            %h3
+              Log in
+
+        .row
+          .columns
+            = label_tag :email
+            = text_field_tag(:email, "", placeholder: "Email")
+
+        .row
+          .columns
+            = label_tag :password
+            = password_field_tag(:password, "", placeholder: "Password")
+
+        .row
+          .columns
+            = check_box_tag :remember_me, params[:remember_me], true
+            = label_tag :remember_me
+
+        .row
+          .columns
+            = submit_tag "Log In" , class: "submit-button"

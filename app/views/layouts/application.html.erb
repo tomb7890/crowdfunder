@@ -8,9 +8,22 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
   </head>
 
   <body>
+    <%= render 'layouts/messages' %>
     <%= yield %>
+
+
+
+ <% if current_user %>
+  Logged in as <%= current_user.email %>.
+  <%= link_to "Log out", logout_path %>
+<% else %>
+  <%= link_to "Sign up", signup_path %> or
+  <%= link_to "log in", login_path %>.
+<% end %>
   </body>
 </html>
